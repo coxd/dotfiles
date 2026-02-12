@@ -1,0 +1,20 @@
+{
+    "modules": ["venv", "host", "ssh", "cwd", "perms", "git", "jobs", "exit"],
+    "path-aliases": {
+        "~/Work/GitHub": "\uEB00"
+    },
+    "theme": "custom",
+    "themes": {
+        "custom": {
+            "NodeFg": 252,
+            "NodeBg": 64,
+            "NodeVersionFg": 28,
+            "NodeVersionBg": 250
+        }
+    },
+    "eval": true,
+    "hostname-only-if-ssh": true,
+    "shell": "zsh",
+    "jobs": "$(jobs -p | wc -l)",
+    "duration-min": "0.25"
+}
