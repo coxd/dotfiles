@@ -7,6 +7,8 @@
     }
 
     function powerline_precmd() {
+
+        # Have to figure out the duration ourselves
         local __ERRCODE=$?
         local __DURATION=0
 
@@ -15,6 +17,7 @@
             __DURATION="$(($__ERT - ${__TIMER:-__ERT}))"
         fi
 
+        # Only show node segment when there is a package.json in the current directory or above
         NODE=""
         DIR="$PWD"
 
@@ -28,12 +31,13 @@
             [[ -z "$DIR" ]] && DIR="/"
         done
 
-         eval "$(powerline-go \
+        # Most of the config is in ~/.config/powerline-go/config.json
+        eval "$(powerline-go \
             -modules-right venv,${NODE}docker-context,duration,load \
             -error $__ERRCODE \
             -duration $__DURATION)"
     
-        # Re-wrap RPROMPT to move it up
+        # This is required to get 2 line prompt to have the right segments show on the 1st line
         PROMPT=$'%{\e[38;5;248;48;5;241m%}╷%{\e[0m%}'"${PROMPT}"
         RPROMPT=$'%{\e[1A%}'${RPROMPT}$'%{\e[1B%}'
         PROMPT+=$'\n%{\e[38;5;248m%}└%{\e[0m%}'

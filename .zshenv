@@ -1,10 +1,5 @@
 #  Use ~/.config/zsh/export.zsh for anything that is interactive only, only non-interactive exports here.
 
-#  Path
-#  -----------------------------------------------------------------------------
-#  export PATH="<more important path>:$PATH"
-   export PATH="/opt/homebrew/opt/curl/bin:/opt/homebrew/opt/openssl/bin:$PATH:$HOME/bin:/Tools/node/bin"
-
 #  Set VSCode as default editor (here because tools may invoke this outside of shells)
 #  ------------------------------------------------------------
    # Requires running "Shell Command: Install 'code' command in PATH" one time from Visual Studio Command Palette (⇧⌘P). 
