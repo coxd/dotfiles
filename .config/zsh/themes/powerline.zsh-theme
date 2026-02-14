@@ -38,6 +38,7 @@
         #   2. There are staged changes to dotfiles
         #.  3. There are unstaged changes to dotfiles
         #   4. There are unpushed commits to dotfiles
+        
         if [[ "$PWD" == "$HOME" ]] && \
            (! dotfiles diff --quiet --ignore-submodules --cached || \
             ! dotfiles diff --quiet --ignore-submodules || \
