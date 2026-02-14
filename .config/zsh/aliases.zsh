@@ -1,8 +1,3 @@
-#  Manage dotfiles in GitHub
-#  -----------------------------------------------------------------------------
-   alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-   compdef dotfiles=git # Necessary for completions to work
-
 #  ls defaults w/ formatting/coloring
 #  -----------------------------------------------------------------------------
    eval "$(gdircolors -b ~/.config/zsh/dircolors)"
