@@ -20,7 +20,7 @@
            
            if ! "${git[@]}" diff --cached --quiet; then
                "${git[@]}" commit -m "$msg" || return 1
-               "${git_cmd[@]}" push || return 1
+               "${git[@]}" push || return 1
            else
                echo "No changes to commit."
            fi
