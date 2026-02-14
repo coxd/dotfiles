@@ -24,10 +24,6 @@
            else
                echo "No changes to commit."
            fi
-
-           "${git[@]}" add -u || return 1
-           "${git[@]}" commit -m "$msg" || return 1
-           "${git[@]}" push || return 1
    
            return 0
        fi
