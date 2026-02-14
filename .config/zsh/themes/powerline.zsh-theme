@@ -31,17 +31,26 @@
             [[ -z "$DIR" ]] && DIR="/"
         done
 
+        DOTFILES_CHANGED=""
+        
+        # Show a segment if there are staged or unstaged changes to dotfiles
+        if [[ "$PWD" == "$HOME" ]] && \
+           (! dotfiles diff --quiet --ignore-submodules --cached || ! dotfiles diff --quiet --ignore-submodules); then
+            DOTFILES_CHANGED=$'%{\e[48;5;22m\e[38;5;124m%}%{\e[48;5;124m\e[38;5;254m%}   %{\e[0m%}'
+        fi
+
         # Most of the config is in ~/.config/powerline-go/config.json
         eval "$(powerline-go \
             -modules-right venv,${NODE}docker-context,duration,load \
             -error $__ERRCODE \
             -duration $__DURATION)"
-    
+
+        RPROMPT+="$DOTFILES_CHANGED"
+
         # This is required to get 2 line prompt to have the right segments show on the 1st line
         PROMPT=$'%{\e[38;5;248;48;5;241m%}╷%{\e[0m%}'"${PROMPT}"
         RPROMPT=$'%{\e[1A%}'${RPROMPT}$'%{\e[1B%}'
         PROMPT+=$'\n%{\e[38;5;248m%}└%{\e[0m%}'
-
     }
 
    function install_powerline_precmd() {
