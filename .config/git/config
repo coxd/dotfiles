@@ -3,6 +3,12 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[diff]
+	tool = vscode
+[difftool]
+    prompt = false
+[difftool "vscode"]
+	cmd = code --wait --diff $LOCAL $REMOTE
 [user]
 	name = Daniel Cox
 	email = coxd@users.noreply.github.com

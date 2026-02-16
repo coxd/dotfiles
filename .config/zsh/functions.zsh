@@ -1,8 +1,14 @@
 #  Manage dotfiles in GitHub
 #  -----------------------------------------------------------------------------
-   # This enables this to be used in $() in
-   # ~/.config/zsh/themes/powerline.zsh-theme
+   # Enables $() to be used in ~/.config/zsh/themes/powerline.zsh-theme
    #
+   # To initialize a new home dir:
+   #
+   # git init --bare $HOME/.dotfiles
+   # git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME config --local status.showUntrackedFiles no
+   # git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME remote add origin git@github.com:coxd/dotfiles.git
+   # git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME pull
+
    dotfiles() {
        local git=(/usr/bin/git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME")
    
