@@ -2,7 +2,7 @@
 #  -----------------------------------------------------------------------------
    # Enables $() to be used in ~/.config/zsh/themes/powerline.zsh-theme
    #
-   # To initialize a new home dir:
+   # To initialize a new home dir (after ~/.ssh/github.readme):
    #
    # git init --bare $HOME/.dotfiles
    # git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME config --local status.showUntrackedFiles no
