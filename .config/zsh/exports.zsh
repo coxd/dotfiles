@@ -1,6 +1,10 @@
 #  Use ~/.zshenv for anything that is needed outside of an interactive shell,
 #  only interactive exports here.
 
+#  =============================================================================
+#  Always
+#  =============================================================================
+
 #  Path
 #  -----------------------------------------------------------------------------
 #  For a shell on zsh the following are processed in the order shown:
@@ -23,27 +27,20 @@
 #  of /etc/zprofile. Thus if anything you want before these cannot be done in
 #  .zshenv
 #
-#  The $PATH being setup here assumes that there will not be a need for these
-#  paths for non-interactive shells such as ones you execute through 
-#  launchctl/launchd - those need to set an explicit path for anything they 
-#  need.
+#  The $PATH being setup here and/or the os-specific sections assumes that there
+#  will not be a need for these paths for non-interactive shells such as ones 
+#  you execute through launchctl/launchd - those need to set an explicit path 
+#  for anything they need.
 #
-#  export PATH="<more important path>:$PATH"
    path=(
-      /opt/homebrew/opt/curl/bin
-      /opt/homebrew/opt/openssl/bin
-      $path
-      $HOME/bin
-      /Tools/node/bin)
+       $path
+       $HOME/bin)
    export PATH
 
 #  Tell anything that pays attention to use colors
 #  -----------------------------------------------------------------------------
    export CLICOLOR=1
 
-#  Redirect man to browser
-#  -----------------------------------------------------------------------------
-   export MANPAGER="col -b | open -a /Applications/Firefox.app -f"
 
 #  Set default blocksize for ls, df, du
 #  ------------------------------------------------------------
@@ -52,3 +49,38 @@
 #  Stop tracking history for less command (~/.lesshst)
 #  ------------------------------------------------------------
    export LESSHISTFILE=-
+   
+#  =============================================================================
+#  macos only
+#  =============================================================================
+
+if [[ "$(uname)" == "Darwin" ]]; then
+
+#  Path
+#  -----------------------------------------------------------------------------
+#  See do above
+   path=(
+       /opt/homebrew/opt/curl/bin
+       /opt/homebrew/opt/openssl/bin
+       $path)
+   export PATH
+
+#  Redirect man to browser
+#  -----------------------------------------------------------------------------
+   export MANPAGER="col -b | open -a /Applications/Firefox.app -f"
+
+#  Dump man to terminal instead of using less (MANPAGER)
+#  -----------------------------------------------------------------------------
+   export MANPAGER="col -bx"
+
+fi
+
+#  =============================================================================
+#  linux only
+#  =============================================================================
+
+if [[ "$(uname)" == "Linux" ]]; then
+
+# Nothing yet
+
+fi

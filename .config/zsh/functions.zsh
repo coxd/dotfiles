@@ -1,3 +1,7 @@
+#  =============================================================================
+#  Always
+#  =============================================================================
+
 #  Manage dotfiles in GitHub
 #  -----------------------------------------------------------------------------
    # Enables $() to be used in ~/.config/zsh/themes/powerline.zsh-theme
@@ -7,7 +11,13 @@
    # git init --bare $HOME/.dotfiles
    # git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME config --local status.showUntrackedFiles no
    # git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME remote add origin git@github.com:coxd/dotfiles.git
-   # git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME pull
+   # git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME branch --set-upstream-to=origin/main main
+   # git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME fetch origin main
+   # git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME reset --hard origin/main
+   # git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME checkout -b main origin/main
+   #
+   # fetch/reset is required instead of pull to overwrite any local files. checkout is required so that git will know
+   # about the remote branch (otherwise dotfiles pull will fail for example).
 
    dotfiles() {
        local git=(/usr/bin/git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME")
@@ -48,12 +58,32 @@
        ls -l "$resolved_path"
    }
 
-# JQ Playground
-jqplay() { 
-    command echo '' | fzf --preview 'jq {q} < '$1''  --preview-window=up,99%
-}
+#  JQ Playground
+#  -----------------------------------------------------------------------------
+   jqplay() { 
+       command echo '' | fzf --preview 'jq {q} < '$1''  --preview-window=up,99%
+   }
 
-# Move a file to trash
-trash() { 
-    command mv "$@" ~/.Trash ; 
-}
+#  =============================================================================
+#  macos only
+#  =============================================================================
+
+if [[ "$(uname)" == "Darwin" ]]; then
+
+#  Move a file to trash
+#  -----------------------------------------------------------------------------
+   trash() { 
+       command mv "$@" ~/.Trash ; 
+   }
+
+fi 
+
+#  =============================================================================
+#  linux only
+#  =============================================================================
+
+if [[ "$(uname)" == "Linux" ]]; then
+
+# Nothing yet
+
+fi

@@ -1,17 +1,11 @@
+#  =============================================================================
+#  Always
+#  =============================================================================
+
 #  ls defaults w/ formatting/coloring
 #  -----------------------------------------------------------------------------
    eval "$(gdircolors -b ~/.config/zsh/dircolors)"
    alias ls='gls -lFha --color --time-style="+%Y-%m-%d %H:%M:%S"'
-
-#  Show/hide hidden files in Finder
-#  -----------------------------------------------------------------------------
-   alias showHidden="defaults write com.apple.finder AppleShowAllFiles YES; defaults write -g AppleShowAllFiles -bool true; killall Finder /System/Library/CoreServices/Finder.app"
-   alias hideHidden="defaults write com.apple.finder AppleShowAllFiles NO; defaults write -g AppleShowAllFiles -bool false; killall Finder /System/Library/CoreServices/Finder.app"
-
-#  Turn on normal key repeat vs extended characters
-#  -----------------------------------------------------------------------------
-   alias keyRepeatOn="defaults write -g ApplePressAndHoldEnabled -bool false"
-   alias keyRepeatOff="defaults write -g ApplePressAndHoldEnabled -bool true"
 
 #  CD
 #  -----------------------------------------------------------------------------
@@ -19,25 +13,17 @@
    alias ..="cd ../"
    alias ...="cd ../../"
 
-#  Clear scrollback buffer (command+K equivalent)
-#  -----------------------------------------------------------------------------
-   alias cls="tput reset && tput ed"
-
-#  Clean up LaunchServices to remove duplicates in the "Open With" menu
-#  -----------------------------------------------------------------------------
-   alias cleanOpenWith="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user && killall Finder"
-
 #  Print each PATH entry on a separate line
 #  -----------------------------------------------------------------------------
    alias path='echo -e ${PATH//:/\\n}'
 
+#  Clear scrollback buffer (command+K equivalent)
+#  -----------------------------------------------------------------------------
+   alias cls="tput reset && tput ed"
+
 #  URL Encode a string
 #  -----------------------------------------------------------------------------
    alias urlencode='python3 -c "import sys, urllib.parse as ul; print(ul.quote_plus(sys.argv[1]));"'
-
-#  List non-apple daemon/agent processes
-#  -----------------------------------------------------------------------------
-   alias startups="sudo launchctl list | awk 'NR>1 {print \$3}' | grep -Ev '^(com\.apple|com\.vix|org\.cups.)' | sort"
 
 #  TLS
 #  -----------------------------------------------------------------------------
@@ -45,7 +31,7 @@
    alias tls-nmap-with-port='nmap --script ssl-enum-ciphers -p ''$2'' ''$1'''
    alias tls-openssl='openssl s_client -prexit -showcerts -state -status -tlsextdebug -verify 10 -connect ''$1:443'''
    alias tls-enum='~/bin/ssl-cipher-suite-enum.pl ''$1'''
-   alias tls-sslyze='python -m sslyze --regular ''$1'''
+   alias tls-sslyze='python3 -m sslyze --regular ''$1'''
 
 #  Networking
 #  -----------------------------------------------------------------------------
@@ -61,6 +47,43 @@
    alias openPorts='sudo lsof -i | grep LISTEN'                     # All listening connections
    alias showBlocked='sudo ipfw list'                               # All ipfw rules inc/ blocked IPs
 
+#  =============================================================================
+#  macos only
+#  =============================================================================
+
+if [[ "$(uname)" == "Darwin" ]]; then
+
+#  Show/hide hidden files in Finder
+#  -----------------------------------------------------------------------------
+   alias showHidden="defaults write com.apple.finder AppleShowAllFiles YES; defaults write -g AppleShowAllFiles -bool true; killall Finder /System/Library/CoreServices/Finder.app"
+   alias hideHidden="defaults write com.apple.finder AppleShowAllFiles NO; defaults write -g AppleShowAllFiles -bool false; killall Finder /System/Library/CoreServices/Finder.app"
+
+#  Turn on normal key repeat vs extended characters
+#  -----------------------------------------------------------------------------
+   alias keyRepeatOn="defaults write -g ApplePressAndHoldEnabled -bool false"
+   alias keyRepeatOff="defaults write -g ApplePressAndHoldEnabled -bool true"
+
+#  Clean up LaunchServices to remove duplicates in the "Open With" menu
+#  -----------------------------------------------------------------------------
+   alias cleanOpenWith="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user && killall Finder"
+
+#  List non-apple daemon/agent processes
+#  -----------------------------------------------------------------------------
+   alias startups="sudo launchctl list | awk 'NR>1 {print \$3}' | grep -Ev '^(com\.apple|com\.vix|org\.cups.)' | sort"
+
+
 #  Yubikey + ssh
 #  -----------------------------------------------------------------------------
-   alias yubikey-ssh="ssh-add -s /usr/local/lib/libykcs11.dylib"   
+#  alias yubikey-ssh="ssh-add -s /usr/local/lib/libykcs11.dylib"   
+
+fi
+
+#  =============================================================================
+#  linux only
+#  =============================================================================
+
+if [[ "$(uname)" == "Linux" ]]; then
+
+# Nothing yet
+
+fi
