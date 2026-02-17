@@ -2,11 +2,6 @@
 #  Always
 #  =============================================================================
 
-#  ls defaults w/ formatting/coloring
-#  -----------------------------------------------------------------------------
-   eval "$(gdircolors -b ~/.config/zsh/dircolors)"
-   alias ls='gls -lFha --color --time-style="+%Y-%m-%d %H:%M:%S"'
-
 #  CD
 #  -----------------------------------------------------------------------------
    alias cd..="cd ../"
@@ -53,6 +48,11 @@
 
 if [[ "$(uname)" == "Darwin" ]]; then
 
+#  ls defaults w/ formatting/coloring
+#  -----------------------------------------------------------------------------
+   eval "$(gdircolors -b ~/.config/zsh/dircolors)"
+   alias ls='gls -lFha --color --time-style="+%Y-%m-%d %H:%M:%S"'
+
 #  Show/hide hidden files in Finder
 #  -----------------------------------------------------------------------------
    alias showHidden="defaults write com.apple.finder AppleShowAllFiles YES; defaults write -g AppleShowAllFiles -bool true; killall Finder /System/Library/CoreServices/Finder.app"
@@ -71,7 +71,6 @@ if [[ "$(uname)" == "Darwin" ]]; then
 #  -----------------------------------------------------------------------------
    alias startups="sudo launchctl list | awk 'NR>1 {print \$3}' | grep -Ev '^(com\.apple|com\.vix|org\.cups.)' | sort"
 
-
 #  Yubikey + ssh
 #  -----------------------------------------------------------------------------
 #  alias yubikey-ssh="ssh-add -s /usr/local/lib/libykcs11.dylib"   
@@ -84,6 +83,9 @@ fi
 
 if [[ "$(uname)" == "Linux" ]]; then
 
-# Nothing yet
+#  ls defaults w/ formatting/coloring
+#  -----------------------------------------------------------------------------
+   eval "$(gdircolors -b ~/.config/zsh/dircolors)"
+   alias ls='ls -lFha --color --time-style="+%Y-%m-%d %H:%M:%S"'
 
 fi

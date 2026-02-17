@@ -38,11 +38,12 @@
         #   2. There are staged changes to dotfiles
         #.  3. There are unstaged changes to dotfiles
         #   4. There are unpushed commits to dotfiles
-        
+        #.  5. THere are no unpulled changes to dotfiles
         if [[ "$PWD" == "$HOME" ]] && \
            (! dotfiles diff --quiet --ignore-submodules --cached || \
             ! dotfiles diff --quiet --ignore-submodules || \
-            [[ $(dotfiles rev-list --count @{u}..HEAD 2>/dev/null) -gt 0 ]]); then
+            [[ $(dotfiles rev-list --count @{u}..HEAD 2>/dev/null) -gt 0 ]] || \
+            [[ $(dotfiles rev-list --count HEAD..@{u} 2>/dev/null) -gt 0 ]]); then
             DOTFILES_CHANGED=$'%{\e[48;5;22m\e[38;5;124m%}%{\e[48;5;124m\e[38;5;254m%}   %{\e[0m%}'
         fi
 
