@@ -44,8 +44,8 @@
         #   if we are stale by 10+ minutes.
         if [[ "$PWD" == "$HOME" ]]; then
 
-            mkdir -p "$HOME/.local/dotfiles"
-            LASTFETCH="$HOME/.local/dotfiles/lastfetch"
+            mkdir -p "$HOME/.local/share/dotfiles"
+            LASTFETCH="$HOME/.local/share/dotfiles/lastfetch"
 
             if [[ ! -f "$LASTFETCH" ]] || \
                [[ $(find "$LASTFETCH" -mmin +10 2>/dev/null) ]]; then
