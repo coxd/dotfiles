@@ -11,7 +11,6 @@
    # git init --bare $HOME/.dotfiles
    # git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME config --local status.showUntrackedFiles no
    # git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME remote add origin git@github.com:coxd/dotfiles.git
-   # git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME branch --set-upstream-to=origin/main main
    # git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME fetch origin main
    # git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME reset --hard origin/main
    # git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME checkout -b main origin/main
