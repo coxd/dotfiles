@@ -54,7 +54,9 @@
 
 #   Completions (has to be before sourcing of oh-my-zsh.sh)
 #   -----------------------------------------------------------------------------
-    FPATH="$(brew --prefix)/share/zsh/site-functions:$(brew --prefix)/completions/zsh:$FPATH"
+    if [[ "$(uname)" == "Darwin" ]]; then    
+        FPATH="$(brew --prefix)/share/zsh/site-functions:$(brew --prefix)/completions/zsh:$FPATH"
+    fi
 
     autoload -U compinit
     compinit
