@@ -12,3 +12,5 @@
 [user]
 	name = Daniel Cox
 	email = coxd@users.noreply.github.com
+[init]
+	defaultBranch = main
