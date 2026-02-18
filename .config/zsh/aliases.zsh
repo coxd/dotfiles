@@ -85,7 +85,7 @@ if [[ "$(uname)" == "Linux" ]]; then
 
 #  ls defaults w/ formatting/coloring
 #  -----------------------------------------------------------------------------
-   eval "$(gdircolors -b ~/.config/zsh/dircolors)"
+   eval "$(dircolors -b ~/.config/zsh/dircolors)"
    alias ls='ls -lFha --color --time-style="+%Y-%m-%d %H:%M:%S"'
 
 fi
