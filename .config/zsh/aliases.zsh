@@ -20,6 +20,10 @@
 #  -----------------------------------------------------------------------------
    alias sudo='sudo '
 
+#  Remove clutter in ~
+#  -----------------------------------------------------------------------------
+   alias wget='wget --hsts-file="$HOME/.local/share/wget-hsts"'
+
 #  URL Encode a string
 #  -----------------------------------------------------------------------------
    alias urlencode='python3 -c "import sys, urllib.parse as ul; print(ul.quote_plus(sys.argv[1]));"'
