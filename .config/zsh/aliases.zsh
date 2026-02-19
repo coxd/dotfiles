@@ -16,6 +16,10 @@
 #  -----------------------------------------------------------------------------
    alias cls="tput reset && tput ed"
 
+#  Make sudo honor aliases
+#  -----------------------------------------------------------------------------
+   alias sudo='sudo '
+
 #  URL Encode a string
 #  -----------------------------------------------------------------------------
    alias urlencode='python3 -c "import sys, urllib.parse as ul; print(ul.quote_plus(sys.argv[1]));"'
