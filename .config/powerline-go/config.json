@@ -9,7 +9,9 @@
             "NodeFg": 252,
             "NodeBg": 64,
             "NodeVersionFg": 28,
-            "NodeVersionBg": 250
+            "NodeVersionBg": 250,
+            "WSLMachineFg": 254,
+            "WSLMachineBg": 240
         }
     },
     "eval": true,

@@ -64,7 +64,7 @@
 
         # Most of the config is in ~/.config/powerline-go/config.json
         eval "$(powerline-go \
-            -modules-right venv,${NODE}docker-context,duration,load \
+            -modules-right duration,venv,${NODE}docker-context,wsl,load \
             -error $__ERRCODE \
             -duration $__DURATION)"
 
