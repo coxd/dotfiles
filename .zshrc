@@ -54,13 +54,11 @@
 
 #   Completions (has to be before sourcing of oh-my-zsh.sh)
 #   -----------------------------------------------------------------------------
+    export ZSH_COMPDUMP="$HOME/.cache/zsh/zcompdump"
+
     if [[ "$(uname)" == "Darwin" ]]; then    
         FPATH="$(brew --prefix)/share/zsh/site-functions:$(brew --prefix)/completions/zsh:$FPATH"
     fi
-
-    autoload -U compinit
-    compinit
-    zmodload zsh/complist
 
 #   Plugins
 #   -----------------------------------------------------------------------------
@@ -77,6 +75,7 @@
 
 #   Completions & history navigation (has to be after sourcing of oh-my-zsh.sh)
 #   -----------------------------------------------------------------------------
+    zmodload zsh/complist
     bindkey '^I' menu-complete
     bindkey '^[Z' reverse-menu-complete
     bindkey -M menuselect '^M' .accept-line
