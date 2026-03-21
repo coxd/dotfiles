@@ -1,0 +1,34 @@
+#  Commands
+#  -----------------------------------------------------------------------------
+   # Prevent macos from creating .ds_store files on network shares - on needs to
+   # be run once and then reboot
+   defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool TRUE
+
+   # List extended attributes (@ character in permissions)
+   > xattr -l
+
+   # Remove extended attributes (@ character in permissions)
+   > xattr -dr <attribute name - com.apple.xxx>
+
+   # Recurse over all files in all subdirectories and execute a command
+   > find . -type f -exec <command with '{}' where file path goes> +
+
+#  ykman (yubikey CLI) 
+#  -----------------------------------------------------------------------------
+   # List FIDO keys 
+   ykman fido credentials list
+
+#  GitHub / Git
+#  -----------------------------------------------------------------------------
+   Sync fork
+
+   git checkout master (check status of fork - unmerged commits will force a merge)
+   git merge upstream/master (with no unmerged commits will do a fast forward pulling in all changes from source)
+   git push (push the changes just merged from upstream to fork)
+
+   # Reset a fork to match parent - lose all local history (master branch)
+
+   git fetch upstream
+   git checkout master
+   git reset --hard upstream/master  
+   git push origin master --force
